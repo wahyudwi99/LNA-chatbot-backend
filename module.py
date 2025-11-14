@@ -1,18 +1,10 @@
-import io
 import os
-import re
-import jwt
-import json
 import pytz
 import psycopg2
-import warnings
 import pandas as pd
 from google import genai
 from datetime import datetime
-from google.genai import types
 from template_prompt import template_prompt_chatbot
-from dotenv import load_dotenv
-load_dotenv("./.env")
 
 
 QUERY_DIR_PATH="./queries"

@@ -1,16 +1,11 @@
 import os
-import httpx
 import asyncio
 import traceback
-from pydantic import BaseModel
 from concurrent.futures import ThreadPoolExecutor
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import RedirectResponse, JSONResponse
-from fastapi import FastAPI, Request, HTTPException, Depends, Body
+from fastapi import FastAPI, HTTPException, Depends, Body
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from module import construct_response
-from dotenv import load_dotenv
-load_dotenv("./.env")
 
 
 # Define global environment vairables
