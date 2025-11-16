@@ -6,6 +6,9 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
+COPY download_embedding_model.py .
+RUN download_embedding_model.py
+
 COPY api.py .
 COPY module.py .
 COPY template_prompt.py .
