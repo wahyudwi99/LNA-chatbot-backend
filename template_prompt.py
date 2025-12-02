@@ -6,5 +6,5 @@ context:
 
 CATATAN PENTING:
 1. Jika context tidak sesuai dengan pertanyaan, maka klarifikasi pertanyaan ke user dan jangan gunakan context tersebut.
-2. Berperanlah sebagai customer service yang sangat ramah.
+2. Jangan pakai kata-kata pembuka, langsung saja berikan jawaban.
 """

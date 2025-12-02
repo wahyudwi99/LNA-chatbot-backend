@@ -8,6 +8,8 @@ from datetime import datetime
 import torch.nn.functional as F
 from torch import Tensor
 from template_prompt import template_prompt_chatbot
+from dotenv import load_dotenv
+load_dotenv("./.env")
 
 QUERY_DIR_PATH="./queries"
 
@@ -82,10 +84,20 @@ def retrieve_relevant_data(input_prompt: str,
     connection.close()
 
     # Select best matched data
-    context = df["knowledge"].values[0]
-    similarity = df["similarity"].values[0]
+    context = ""
+    similarity_1 = 0
+    for idx in range(len(df)):
+        knowledge = df["knowledge"].values[idx]
+        similarity = df["similarity"].values[idx]
+        if not context:
+            context = f"CONTEXT 1:\n{knowledge}\n\n"
+            similarity_1 = similarity
+        else:
+            if (similarity_1 - similarity) <= 0.01:
+                context += f"CONTEXT {idx+1}:\n{knowledge}\n\n"
+
     
-    return context, similarity
+    return context, similarity_1
 
 
 def construct_response(input_prompt: str,

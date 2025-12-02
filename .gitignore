@@ -1,5 +1,8 @@
 *.env
 *.ipynb
 *.pyc
+*.pdf
 *.DS_STORE
+*.xlsx
+*.csv
 *models
