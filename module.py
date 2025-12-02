@@ -8,8 +8,7 @@ from datetime import datetime
 import torch.nn.functional as F
 from torch import Tensor
 from template_prompt import template_prompt_chatbot
-from dotenv import load_dotenv
-load_dotenv("./.env")
+
 
 QUERY_DIR_PATH="./queries"
 
