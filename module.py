@@ -66,8 +66,13 @@ def retrieve_relevant_data(input_prompt: str,
     warnings.filterwarnings("ignore")
 
     # Vectorization (embedding)
-    reconstructed_input_prompt = f"query: {input_prompt}"
-    input_token_data = embedding_tokenizer(reconstructed_input_prompt, max_length=512, padding=True, truncation=True, return_tensors="pt")
+    input_token_data = embedding_tokenizer(
+        input_prompt,
+        max_length=512,
+        padding=True,
+        truncation=True,
+        return_tensors="pt"
+    )
     embedding_output = embedding_model(**input_token_data)
     embedding_output = average_pooling(embedding_output.last_hidden_state, input_token_data["attention_mask"])
     normalized_embedding_output = F.normalize(embedding_output, p=2, dim=1)
